@@ -32,7 +32,7 @@
     <h1 class="text-center mt-5">Product Crud</h1>
     
  <div class="container mt-5">
-<a href="create.php" class="btn btn-sm btn-primary mb-2">Create Product</a>
+  <a href="create.php" class="btn btn-sm btn-primary mb-2">Create Product</a>
 
  <table class="table table-bordered ">
   <thead class="text-center">
@@ -49,18 +49,20 @@
     <?php foreach($products as $i => $product){ ?>
      <tr>
       <th scope="row"><?php $i + 1 ?></th>
-      <td></td>
+      <td> <img src="<?php echo $product['image'] ?>"  style="width:50px"/> </td>
       <td><?php echo $product["title"] ?></td>
       <td><?php echo $product["price"] ?></td>
       <td><?php echo $product["create_date"] ?></td>
       <td>
-        <button type="button" class="btn btn-sm btn-primary">Add</button>
-        <button type="button" class="btn btn-sm btn-danger">Delete</button>
+        <a href="update.php?id=<?php echo $product["id"] ?>"  class="btn btn-sm btn-primary">Add</a>
+        <form style="display: inline-block;" method="POST" action="delete.php">
+        <input type="hidden" name="id"  value="<?php echo $product["id"] ?>">
+        <button  type="submit" class="btn btn-sm btn-danger">Delete</button>     
+       </form>
       </td>      
     </tr>
     <?php } ?>
-</table>
- </div>
-    
+  </table>
+  </div>   
   </body> 
 </html>
